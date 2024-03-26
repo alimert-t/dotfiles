@@ -1,1 +1,7 @@
 import = ["/home/alimertturaclar/.config/alacritty/aura-theme.toml"]
+
+[keyboard]
+  [[keyboard.bindings]]
+  key = "N"
+  mods = "Control|Shift"
+  action = "CreateNewWindow"
