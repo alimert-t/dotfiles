@@ -43,7 +43,7 @@ find "$SOURCE_FOLDER" -type f | while read file; do
         if [[ "$basename" == *.toml ]]; then
             # File is a TOML config; convert to YAML
             echo "Converting $file to YAML format for Alacritty compatibility."
-            yaml_file_path="${dest_path%.*}.yaml"
+            yaml_file_path="${dest_path%.*}.yml"
             python toml_to_yaml.py "$file" "$yaml_file_path"
         fi
     elif [[ "$FOLDER_NAME" == "kitty" ]]; then
@@ -66,3 +66,4 @@ if [[ "$FOLDER_NAME" == "kitty" ]]; then
     nohup kitty &>/dev/null &
     echo "kitty has been restarted to apply the changes."
 fi
+
