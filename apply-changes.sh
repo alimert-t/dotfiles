@@ -21,6 +21,9 @@ if [ ! -d "$SOURCE_FOLDER" ]; then
     exit 2
 fi
 
+# Determine the folder name from SOURCE_FOLDER
+FOLDER_NAME=$(basename "$SOURCE_FOLDER")
+
 # Copying files and converting if necessary
 echo "Starting to process files from '$SOURCE_FOLDER'..."
 
@@ -35,22 +38,27 @@ find "$SOURCE_FOLDER" -type f | while read file; do
     # Ensure the destination directory exists
     mkdir -p "$(dirname "$dest_path")"
     
-    if [[ "$dirname" == "alacritty" && "$basename" == *.toml && "$ALACRITTY_NEEDS_CONVERSION" -lt "$ALACRITTY_CONVERSION_THRESHOLD" ]]; then
-        # Alacritty version is less than 0.13, and file is a TOML config; convert to YAML
-        echo "Converting $file to YAML format for Alacritty compatibility."
-        yaml_file="${file%.*}.yaml"
-        python toml_to_yaml.py "$file" "$yaml_file"
-        cp -v "$yaml_file" "$dest_path"
+    # Check if it's the alacritty directory and needs conversion
+    if [[ "$FOLDER_NAME" == "alacritty" && "$ALACRITTY_NEEDS_CONVERSION" -lt "$ALACRITTY_CONVERSION_THRESHOLD" ]]; then
+        if [[ "$basename" == *.toml ]]; then
+            # File is a TOML config; convert to YAML
+            echo "Converting $file to YAML format for Alacritty compatibility."
+            yaml_file_path="${dest_path%.*}.yaml"
+            python toml_to_yaml.py "$file" "$yaml_file_path"
+        fi
+    elif [[ "$FOLDER_NAME" == "kitty" ]]; then
+        # Directly copy file for kitty
+        cp -v "$file" "$dest_path"
     else
-        # Directly copy file
+        # Directly copy file for other folders
         cp -v "$file" "$dest_path"
     fi
 done
 
 echo "File processing operation completed."
 
-# Check if the folder is specifically for 'kitty' and restart kitty if it is
-if [[ "$SOURCE_FOLDER" == *"kitty"* ]]; then
+# Specific operations for kitty
+if [[ "$FOLDER_NAME" == "kitty" ]]; then
     echo "Detected kitty configuration changes. Restarting kitty..."
     # Killing all current kitty instances
     pkill kitty
@@ -58,4 +66,3 @@ if [[ "$SOURCE_FOLDER" == *"kitty"* ]]; then
     nohup kitty &>/dev/null &
     echo "kitty has been restarted to apply the changes."
 fi
-
