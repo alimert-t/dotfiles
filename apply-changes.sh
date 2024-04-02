@@ -67,3 +67,9 @@ if [[ "$FOLDER_NAME" == "kitty" ]]; then
     echo "kitty has been restarted to apply the changes."
 fi
 
+if [[ "$FOLDER_NAME" == "tmux" ]]; then
+    echo "Detected tmux configuration changes. Restarting tmux..."
+    pkill tmux
+    nohup tmux
+    echo "tmux has been restarted to apply the changes."
+fi
