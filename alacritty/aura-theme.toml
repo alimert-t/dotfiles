@@ -3,7 +3,8 @@
 [colors]
 
   [colors.primary]
-  background = "#242424"
+  #background = "#242424"
+  background = "#000000"
   foreground = "#edecee"
 
   [colors.cursor]
