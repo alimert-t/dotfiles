@@ -1,0 +1,32 @@
+# Chadracula Evondev Theme for Alacritty
+
+[colors]
+
+  [colors.primary]
+  background = "#141423"
+  foreground = "#E9E9F4"
+
+  [colors.cursor]
+  text = "#141423"
+  cursor = "#E9E9F4"
+
+  [colors.normal]
+  black = "#141423"
+  red = "#FF5555"
+  green = "#50FA7B"
+  yellow = "#F1FA8C"
+  blue = "#2CCCFF"
+  magenta = "#BD93F9"
+  cyan = "#2CCCFF"
+  white = "#F8F8F2"
+
+  [colors.bright]
+  black = "#1c1c31"
+  red = "#FF6E6E"
+  green = "#20E3B2"
+  yellow = "#F2FA95"
+  blue = "#92A2D4"
+  magenta = "#a166f6"
+  cyan = "#9A86FD"
+  white = "#E9E9F4"
+
