@@ -1,4 +1,10 @@
-import = ["/home/alimertturaclar/.config/alacritty/aura-theme.toml"]
+import = ["/home/alimertturaclar/.config/alacritty/chadracula.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+program = "tmux"
 
 [keyboard]
   [[keyboard.bindings]]
