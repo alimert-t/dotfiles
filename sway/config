@@ -79,16 +79,16 @@ client.focused #00d1d1 #00d1d1 #000000
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+q exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+c kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
 
     # Lock screen
-    bindsym $mod+p exec swaylock
+    bindsym $mod+l exec swaylock
 
     # Sound control
 
