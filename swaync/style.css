@@ -1,0 +1,168 @@
+/* Define Base Colors */
+@define-color cc-bg rgba(24, 25, 38, 0.75); /* Slightly transparent dark background */
+@define-color noti-border-color #2190a4; /* Cyan accent color */
+@define-color noti-bg rgba(24, 25, 38, 0.8); /* Background for notifications and buttons */
+@define-color noti-bg-button #2190a4; /* Subtle hover effect with light cyan */
+@define-color noti-bg-hover #70e5fa; /* Subtle hover effect with light cyan */
+/*@define-color text-color #8bd5ca;  */
+@define-color text-color #ffffff; /* Cyan text */
+@define-color text-color-disabled rgba(150, 150, 150, 0.7); /* Greyed-out disabled text */
+@define-color urgent #a421a0;
+@define-color bg-selected #2190a4;
+/* General Button Styles */
+button {
+  background: @noti-bg-button; /* Dark background */
+  color: @text-color; /* Cyan text */
+  border: 1px solid @noti-border-color; /* Cyan border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 8px 12px;
+  margin: 5px;
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove any shadow artifacts */
+}
+
+/* Button Hover */
+button:hover {
+  background: @noti-bg-hover; /* Light cyan hover effect */
+  border: 1px solid @noti-border-color; /* Cyan border */
+  color: @text-color; /* Cyan text */
+}
+
+/* Button Active/Pressed State */
+button:active, button:checked {
+  background: @noti-bg-hover; /* Cyan highlight on press */
+  border: 1px solid @noti-border-color; /* Cyan border */
+  color: @text-color; /* Cyan text */
+  outline: none; /* Ensure no outline is applied */
+  box-shadow: none; /* Remove shadow artifacts */
+}
+
+/* Dropdown Menu Items */
+.menu-item {
+  background: @noti-bg; /* Dark background */
+  color: @text-color; /* Cyan text */
+  border: 1px solid @noti-border-color; /* Cyan border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 8px 12px;
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove any shadow artifacts */
+}
+
+.menu-item:hover {
+  background: @noti-bg-hover; /* Light cyan hover effect */
+  border: 1px solid @noti-border-color; /* Cyan border */
+}
+
+.menu-item:active, .menu-item:checked {
+  background: @noti-bg-hover; /* Cyan highlight for active items */
+  border: 1px solid @noti-border-color; /* Cyan border */
+  color: @text-color; /* Cyan text */
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove shadow artifacts */
+}
+
+/* Notifications */
+.notification-row {
+  outline: none; /* Remove focus outline */
+}
+
+.notification-row:focus, .notification-row:hover {
+  background: @noti-bg-hover; /* Highlight notifications on hover */
+}
+
+.notification-row .notification-background {
+  padding: 8px 16px;
+  border-radius: 12px; /* Rounded corners */
+  background: @noti-bg; /* Background for each notification */
+  box-shadow: none;
+}
+
+/* Close Button */
+.notification-row .notification-background .close-button {
+  background: transparent;
+  color: @text-color;
+  border: 1px solid @noti-border-color; /* Cyan border */
+  border-radius: 50%;
+  padding: 4px;
+  margin: 5px;
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove shadow artifacts */
+}
+
+.notification-row .notification-background .close-button:hover {
+  background: @noti-bg-hover;
+  border: 1px solid @noti-border-color; /* Cyan border */
+  color: @text-color;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+  color: @urgent;
+}
+
+.notification-row .notification-background .notification.critical {
+  /* Critical Priority Notification */
+  background: @urgent;
+  color: @urgent;
+}
+
+/* Widgets */
+.widget {
+  margin: 8px;
+  background: @noti-bg; /* Dark background */
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid @noti-border-color; /* Cyan border for widgets */
+}
+
+.widget-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: @text-color;
+}
+
+.widget-backlight, .widget-volume {
+  background: @noti-bg; /* Dark background */
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid @noti-border-color; /* Cyan border */
+}
+
+.widget-dnd > switch:checked {
+  background: @bg-selected;
+}
+
+/* Sliders */
+scale {
+  background-color: rgba(24, 25, 38, 0.6); /* Slider track background */
+  border-radius: 10px; /* Rounded slider track */
+  min-height: 6px; /* Adjust the thickness of the slider track */
+}
+
+scale trough {
+  background-color: @noti-border-color; /* Cyan slider progress */
+  border-radius: 10px; /* Rounded progress bar */
+}
+
+scale trough slider {
+  background-color: @noti-border-color; /* Cyan handle */
+  border: none; /* Remove any borders */
+  border-radius: 50%; /* Circular handle */
+}
+
+scale trough slider:hover {
+  background-color: #FFFFFF; /* White handle when hovered */
+  border: 2px solid @noti-border-color; /* Cyan border on hover */
+}
+
+.notification-row .notification-background .notification {
+  /* The actual notification */
+  background: @noti-bg;
+}
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
+  background: @noti-bg;
+  color: @text-color;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
+  background: @noti-bg;
+}
