@@ -11,3 +11,7 @@ program = "tmux"
   key = "N"
   mods = "Control|Shift"
   action = "CreateNewWindow"
+
+[window]
+dynamic_title = true
+
