@@ -4,48 +4,66 @@
   font-size: 14px;
   font-weight: 600;
   background: none;
+  color: #ffffff; /* Unified color for text and icons */
 }
 
 window#waybar {
-  color: #8bd5ca;  /* Unified color, same as the clock */
+  background-color: rgba(24, 25, 38, 0.75); /* Translucent dark background */
+  color: #ffffff; /* White text for better visibility */
+  border-radius: 10px; /* Smooth corners like GNOME */
+  padding: 3px 6px; /* Balanced padding */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5); /* Add subtle shadow for depth */
 }
 
-/*.modules-center,*/ 
 .modules-left,
-.modules-right{
-  border-radius: 6px;
-  background: #181926;
-  padding: 0 12px;  /* Adjust padding for horizontal layout */
+.modules-center,
+.modules-right {
+  padding: 0 3px; /* Uniform padding */
 }
 
-#custom-sep {
-  color: #494d64;
-  margin: 0 4px; /* Adjust margin for horizontal layout */
-}
-
-#custom-powermenu {
-  margin: 0 12px 0 0;  /* Adjust margin for horizontal layout */
+#workspaces {
+  padding: 0 3px; /* Adjust padding for alignment */
 }
 
 #workspaces button {
-  color: #8bd5ca;  /* Match the clock color */
-  background: none;
-  padding: 0;
+  color: #ffffff; /* White for buttons */
+  background: transparent; /* No background for GNOME-like simplicity */
+  padding: 2px 8px; /* Adjust padding for consistency */
+  margin: 0 4px; /* Spacing between workspace buttons */
+  border-radius: 6px; /* Rounded corners for buttons */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
 }
 
-#temperature {
-  color: #8bd5ca;  /* Match the clock color */
+#workspaces button:focus,
+#workspaces button:hover {
+  background-color: rgba(139, 213, 202, 0.2); /* Subtle hover highlight */
 }
 
-#custom-bluetooth_devices {
-  color: #8bd5ca;  /* Match the clock color */
-}
-
-#pulseaudio {
-  color: #8bd5ca;  /* Match the clock color */
+#temperature,
+#custom-bluetooth_devices,
+#pulseaudio,
+#pulseaudio.muted {
+  color: #ffffff; /* Unified white for all modules */
 }
 
 #pulseaudio.muted {
-  color: #ed8796;  /* This can stay different for muted state */
+  color: #ff6c6b; /* Red for muted state */
 }
 
+#custom-sep,
+#custom-powermenu {
+  padding: 0 6px; /* Balanced spacing for separators */
+}
+
+.module {
+  padding: 0 8px; /* Uniform padding for modules */
+  border-radius: 6px; /* Rounded corners for GNOME-like design */
+  transition: background-color 0.2s ease; /* Smooth hover effect */
+}
+
+.module:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
+}

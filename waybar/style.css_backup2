@@ -1,0 +1,52 @@
+* {
+  border: none;
+  font-family: "JetBrains Mono", "FiraCode Nerd Font", "sans-serif";
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+}
+
+window#waybar {
+    background-color: rgba(24, 25, 38, 0.8);
+    color: #8bd5ca;
+    border-radius: 6px;
+    padding: 0 12px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 12px;
+  background: none; /* Remove separate background for unified look */
+}
+
+#custom-sep,
+#custom-powermenu,
+
+#workspaces {
+  padding: 0 6px; /* Adjust padding around the workspaces module */
+}
+
+#workspaces button {
+  color: #8bd5ca;
+  background: none;
+  padding: 0px 1px; /* Adjust padding within each workspace button */
+  margin: 0 1px; /* Adds spacing between each workspace button */
+  border-radius: 4px; /* Rounded corners for a cleaner look */
+}
+
+#workspaces button:focus,
+#workspaces button:hover {
+  background-color: rgba(139, 213, 202, 0.2); /* Highlight on hover */
+}
+
+#temperature,
+#custom-bluetooth_devices,
+#pulseaudio,
+#pulseaudio.muted {
+  color: #8bd5ca; /* Unified color for all elements */
+}
+
+#pulseaudio.muted {
+  color: #ed8796; /* Separate color for muted state */
+}

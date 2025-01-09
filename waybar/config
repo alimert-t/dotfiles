@@ -6,64 +6,43 @@
   "spacing": 2,
   "modules-left": [
     "hyprland/workspaces",
-    "custom/sep",
-    "hyprland/window",
-    "custom/sep",
-    "custom/weather",
-    "custom/sep",
-    "clock"
   ],
   "modules-center": [
-
+    "custom/weather",
+    "clock"
   ],
   "modules-right": [
     "cpu",
-    "custom/sep",
     "disk",
-    "custom/sep",
     "memory",
-    "custom/sep",
-    "network",
-    "custom/sep",
     "temperature",
-    "custom/sep",
     "pulseaudio",
-    "custom/sep",
-    "battery",
-    "custom/sep",
     "backlight",
-    "custom/sep",
+    "battery",
+    "network",
+    "custom/notification",
     "custom/powermenu"
   ],
   "custom/sep": {
-    "format": ""  // Separator from Font Awesome Free or Nerd Fonts
+   // "format": ""  // Separator from Font Awesome Free or Nerd Fonts
+    "format": "|"
   },
   "custom/powermenu": {
     "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
     "format": "⏻",  // Power icon from Nerd Fonts or Unicode
     "tooltip": false
   },
-  "custom/bluetooth_devices": {
-    "exec": "$HOME/.config/waybar/custom_modules/bluetooth_devices.sh",
-    "return-type": "json",
-    "format": "{}",
-    "justify": "center",
-    "interval": 5,
-    "on-click": "blueman-manager"
-  },
+
   "hyprland/workspaces": {
-    "format": "{icon}",
+    "format": "{id}",
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "format-icons": {
-      "active": "",  // Free version of the icon
-      "urgent": "",
-      "default": ""
-    }
+    "format-icons": null
   },
   "clock": {
-    "format": "{:%H:%M | %Y-%m-%d}"
+    "format": "{:%H:%M | %d-%m-%Y}",
+    "on-click": "gnome-calendar"
   },
   "tray": {
     "icon-size": 18,
@@ -82,7 +61,7 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}%",
-    "format-muted": "MUTE ",
+    "format-muted": "MUTE",
     "format-icons": {
       "headphones": "",  // Free icon from Font Awesome Free
       "handsfree": "",
@@ -106,44 +85,86 @@
     }
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-icons": [" ", " ", " ", " ", " "]
+      "format": "<span font='Font Awesome 5 Free 11'>{icon} </span> {capacity}%",
+      "format-icons": ["", "", "", "", ""],
+      "format-charging": "<span font='Font Awesome 5 Free'></span> <span font='Font Awesome 5 Free 11'>{icon} </span> {capacity}% ",
+      "format-full": "<span font='Font Awesome 5 Free'></span> <span font='Font Awesome 5 Free 11'>{icon}</span> Charged",
+      "interval": 30,
+      "states": {
+          "warning": 25,
+          "critical": 10
+      },
+      "tooltip": false,
   },
   "cpu": {
 	  "interval": 1,
-	  "format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ",
+	  "format": "{icon0}{icon1}{icon2}{icon3}  {usage:>2}%",
 	  "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click":"gnome-system-monitor"
+
   },
   "disk": {
 	  "interval": 30,
 	  "format": " {percentage_free}%",
-    "path": "/"
+    "path": "/",
+    "on-click":"gnome-system-monitor"
   },
   "memory": {
 	  "interval": 30,
-	  "format": "{}% ",
-	  "max-length": 10
+	  "format": " {}%",
+	  "max-length": 10,
+    "on-click":"gnome-system-monitor"
   },
   "network": {
     "interface": "wlp3s0",
     "format": "{ifname}",
-    "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": "{ifname}  ",
+    "format-wifi": " ",
+    "format-ethernet": " ",
     "format-disconnected": " ",
     "tooltip-format": "{ifname}",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-wifi": "  {ifname}",
     "tooltip-format-ethernet": "{ifname}  ",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
+    "max-length": 25,
+    "on-click":"kitty nmtui"
   },
   "custom/weather": {
-    "format": "{} ",
+    "format": " {}",
     "exec": "curl -s wttr.in/?format=%t+%C",
-    "interval": 10
+    "interval": 10,
+    "on-click": "gnome-weather"
   },
   "backlight": {
 	  "device": "intel_backlight",
-	  "format": "{percent}% {icon}",
+	  "format": "{icon}{percent}%",
 	  "format-icons": [" ", " "]
-  }
+  },
+  "sway/window": {
+      "format": "{app_id}",
+      "rewrite": {
+          "(.*)": "$1" 
+      },
+      "max-length": 50,
+      "tooltip": false
+  },
+    "custom/notification": {
+    "tooltip": false,
+    "format": "{} {icon} ",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
 }
