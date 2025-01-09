@@ -1,0 +1,51 @@
+* {
+  border: none;
+  font-family: "JetBrains Mono", "FiraCode Nerd Font", "sans-serif";
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+}
+
+window#waybar {
+  color: #8bd5ca;  /* Unified color, same as the clock */
+}
+
+/*.modules-center,*/ 
+.modules-left,
+.modules-right{
+  border-radius: 6px;
+  background: #181926;
+  padding: 0 12px;  /* Adjust padding for horizontal layout */
+}
+
+#custom-sep {
+  color: #494d64;
+  margin: 0 4px; /* Adjust margin for horizontal layout */
+}
+
+#custom-powermenu {
+  margin: 0 12px 0 0;  /* Adjust margin for horizontal layout */
+}
+
+#workspaces button {
+  color: #8bd5ca;  /* Match the clock color */
+  background: none;
+  padding: 0;
+}
+
+#temperature {
+  color: #8bd5ca;  /* Match the clock color */
+}
+
+#custom-bluetooth_devices {
+  color: #8bd5ca;  /* Match the clock color */
+}
+
+#pulseaudio {
+  color: #8bd5ca;  /* Match the clock color */
+}
+
+#pulseaudio.muted {
+  color: #ed8796;  /* This can stay different for muted state */
+}
+
