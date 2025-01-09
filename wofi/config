@@ -1,6 +1,10 @@
-prompt=
 allow_images=true
+allow_markup=true
 insensitive=true
+hide_scroll=true
+no_actions=true
+term=foot
 location=center
 width=600px
-border-width=0
+lines=10
+always_parse_args=true
